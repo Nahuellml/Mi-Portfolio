@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
     <header>
         <div class="name">
             <span class="letter n">N</span>
@@ -120,16 +122,21 @@
     <section>
         <img src="Img/Hermoso Atardecer.jpeg" id="atardecer">
     </section>
-    <script>
+    <script type="text/javascript">
         let atardecer = document.getElementById("atardecer");
-        let header = document.querySelector("header")
-        let fondoDelViejo = document.getElementById("fondoDelViejo")
+        let header = document.querySelector("header");
+        let fondoDelViejo = document.getElementById("fondoDelViejo");
+        let progress = document.getElementById('progressbar');
+        let totalHeight = document.body.scrollHeight - window.innerHeight;
        
         window.addEventListener ("scroll", function() {
             let value = window.scrollY;
             atardecer.style.top = value * 0.25 + "px";
             header.style.top = value * 0.9 + "px";
             fondoDelViejo.style.top = value * 0.5 + "px";
+
+            let progressHeight = (window.pageYOffset / totalHeight) * 100;
+            progress.style.height = progressHeight + '%';
         })
     </script>
 </body>
